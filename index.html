@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <script>
+        function computerPlay() {
+            let  choices =  ["rock", "paper", "scissors"];
+            return(choices[Math.floor(Math.random() * choices.length)]);
+        }
+        
+        function playRound(playerSelection, computerSelection) {
+             if (playerSelection === "rock") {
+                 switch (computerSelection) {
+                     case "rock":
+                         return "Computer chose Rock. It's a draw.";
+                         break;
+                    case "paper":
+                        return "Paper beats Rock. Computer wins";
+                        break;
+                    case "scissors":
+                        return "Rock beats Scissors. You win!";
+                        break;
+                 }
+                }
+                 
+            else if (playerSelection === "paper") {
+                 switch (computerSelection) {
+                     case "rock":
+                        return "Paper beats Rock. You win!";
+                         break;
+                    case "paper":
+                        return "Computer chose Paper. It's a draw.";
+                        break;
+                    case "scissors":
+                        return "Scissors beat Paper. Computer wins";
+                        break;
+                 }
+             }
+
+            else {
+                switch (computerSelection) {
+                    case "rock":
+                         return "Rock beats Scissors. You win";
+                         break;
+                    case "paper":
+                        return "Scissors beat beat Paper. You lose.";
+                        break;
+                    case "scissors":
+                        return "Computer chose Scissors. It's a draw.";
+                        break;
+                }
+            }
+        }
+
+        let playerChoice = prompt("Rock, Paper, or Scissors: ");
+        playerChoice = playerChoice.toLowerCase();
+        let computerChoice = computerPlay();
+        console.log(playRound(playerChoice, computerChoice));
+    </script>
+</body>
+</html>
