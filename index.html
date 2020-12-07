@@ -7,59 +7,68 @@
 </head>
 <body>
     <script>
-        function computerPlay() {
-            let  choices =  ["rock", "paper", "scissors"];
-            return(choices[Math.floor(Math.random() * choices.length)]);
-        }
         
-        function playRound(playerSelection, computerSelection) {
-             if (playerSelection === "rock") {
-                 switch (computerSelection) {
-                     case "rock":
-                         return "Computer chose Rock. It's a draw.";
-                         break;
-                    case "paper":
-                        return "Paper beats Rock. Computer wins";
-                        break;
-                    case "scissors":
-                        return "Rock beats Scissors. You win!";
-                        break;
-                 }
-                }
-                 
-            else if (playerSelection === "paper") {
-                 switch (computerSelection) {
-                     case "rock":
-                        return "Paper beats Rock. You win!";
-                         break;
-                    case "paper":
-                        return "Computer chose Paper. It's a draw.";
-                        break;
-                    case "scissors":
-                        return "Scissors beat Paper. Computer wins";
-                        break;
-                 }
-             }
+        function computerPlay() { //create a Computer AI that selects a random choice
+             return(choices[Math.floor(Math.random() * choices.length)]);
+        }
 
-            else {
-                switch (computerSelection) {
-                    case "rock":
-                         return "Rock beats Scissors. You win";
-                         break;
-                    case "paper":
-                        return "Scissors beat beat Paper. You lose.";
-                        break;
-                    case "scissors":
-                        return "Computer chose Scissors. It's a draw.";
-                        break;
-                }
+        function playerPlay() { //get input from user, converts it to lower case, & checks if input is valid
+            let playerChoice = prompt("Let's play. Choose Rock, Paper, or Scissors: ");
+            if (choices.includes(playerChoice.toLowerCase()) == true){
+                return playerChoice.toLowerCase();
+            }
+            else{
+                console.log("Input not valid. Type Rock, Paper, or Scissors");
+                playerPlay();
             }
         }
 
-        let playerChoice = prompt("Rock, Paper, or Scissors: ");
-        playerChoice = playerChoice.toLowerCase();
-        let computerChoice = computerPlay();
-        console.log(playRound(playerChoice, computerChoice));
+        function playRound(playerSelection, computerSelection) { // a round of the game and checks current scoring
+            playerSelection = playerPlay();
+            computerSelection = computerPlay();
+            if (playerSelection === computerSelection){
+                console.log(`It's a tie. You both chose ${playerSelection}` );
+                console.log(`Player score: ${playerScore} Computer score: ${computerScore}`);
+            }
+
+            else if (
+                ((playerSelection === "rock") && (computerSelection === "scissors")) || 
+                ((playerSelection === "paper") && (computerSelection === "rock")) || 
+                ((playerSelection === "scissors") && (computerSelection === "paper"))
+                ){
+                console.log(`You win. You chose ${playerSelection} and Computer chose ${computerSelection}`);
+                playerScore++;
+                console.log(`Player score: ${playerScore} Computer score: ${computerScore}`);
+            }
+
+            else {
+                console.log(`You lose. You chose ${playerSelection} and Computer chose ${computerSelection}`);
+                computerScore++;
+                console.log(`Player score: ${playerScore} Computer score: ${computerScore}`);
+            }
+                
+        }
+
+        function game(){ //calls the playRound 5 times to play 5 rounds of RCP. checks overall winner after the game ends
+            for (let rounds = 0; rounds < 5; rounds++){
+                playRound();
+            }
+
+            if (playerScore > computerScore){
+            return console.log("Game ends. Player wins overall.")
+            }
+            else if (playerScore == computerScore){
+            return console.log("Game ends. It's a tie.");
+            }
+            else {
+            return console.log("Game ends. Computer wins overall.")
+            }
+        }
+        
+        let choices = ["rock", "paper", "scissors"]; //array of possible choices.
+        let playerScore = 0;
+        let computerScore = 0;
+        console.log(game()); //the master function call.      
     </script>
 </body>
 </html>
