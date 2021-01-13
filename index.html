@@ -8,52 +8,11 @@
 <body>
 <header id="description">Rock, Paper, Scissors but it's Fire, Water, Grass</header>
 <div id="container">
-    
-    <button id = "fire">FIRE</button>
-    <button id = "water">WATER</button>
-    <button id = "grass">GRASS</button>
+    <button id = "fire"><img src="assets/charm.jpeg"></button>
+    <button id = "water"><img src="assets/squi.jpeg"></button>
+    <button id = "grass"><img src="assets/bulba.jpeg"></button>
 </div>
-
-
-
-<script>
-    function computerPlay() { //create a Computer AI that selects a random choice
-        return(choices[Math.floor(Math.random() * choices.length)]);
-    }
-
-        function playRound(e) { // a round of the game and checks current scoring
-            playerSelection = e.target.id;
-            computerSelection = computerPlay();
-            if (playerSelection == computerSelection){
-                console.log(`It's a tie. You both chose ${playerSelection}` );
-                console.log(`Player score: ${playerScore} Computer score: ${computerScore}`);
-            }
-
-            else if (
-                ((playerSelection == "fire") && (computerSelection == "grass")) || 
-                ((playerSelection == "water") && (computerSelection == "fire")) || 
-                ((playerSelection == "grass") && (computerSelection == "water"))
-                ){
-                console.log(`You win. You chose ${playerSelection} and Computer chose ${computerSelection}`);
-                playerScore++;
-                console.log(`Player score: ${playerScore} Computer score: ${computerScore}`);
-            }
-
-            else {
-                console.log(`You lose. You chose ${playerSelection} and Computer chose ${computerSelection}`);
-                computerScore++;
-                console.log(`Player score: ${playerScore} Computer score: ${computerScore}`);
-            }
-        }
-    
-    let playerScore = 0;
-    let computerScore = 0;
-    const choices = ["fire", "water", "grass"];
-    const playerChoice = document.querySelectorAll("button");
-    playerChoice.forEach((button) => {
-            button.addEventListener("click", playRound);
-        });
-
-</script>
+<div id="result"></div>
+<script src ="scripts/rcpscript.js"></script>
 </body>
 </html>
