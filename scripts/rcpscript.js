@@ -3,13 +3,25 @@ function computerPlay() { //create a Computer AI that selects a random choice of
     return(choices[Math.floor(Math.random() * choices.length)]);
 }
 
+function isGameOver(fScore, cont){
+    if (playerScore === 5){
+        cont.appendChild(fsCore);
+        return fScore.textContent = ("Game Over. You win!");
+    }
+
+    else if (computerScore === 5){
+        cont.appendChild(fScore);
+        return fScore.textContent = ("Game Over. Computer wins!");
+    }
+}
+
 function playRound(playerSelection) { // a round of the game and checks current scoring
     const computerSelection = computerPlay();
-    const scoreContainer = document.querySelector("#result");
-    const score = document.createElement("p");
+    const scoreCont = document.querySelector("#result");
+    const finalScore = document.createElement("p")
 
     if (playerSelection === computerSelection){
-        score.textContent = (`It's a tie. You both chose ${playerSelection}. 
+        scoreCont.textContent = (`It's a tie. You both chose ${playerSelection}. 
         Player score: ${playerScore} Computer score: ${computerScore}`);
     }
 
@@ -19,16 +31,17 @@ function playRound(playerSelection) { // a round of the game and checks current 
         ((playerSelection === "grass") && (computerSelection === "water"))
         ){
         playerScore++;
-        score.textContent = (`You win. ${playerSelection} beats ${computerSelection}. 
+        scoreCont.textContent = (`You win. ${playerSelection} beats ${computerSelection}. 
         Player score: ${playerScore} Computer score: ${computerScore}`); 
+        isGameOver(finalScore, scoreCont);
         }
 
     else {
         computerScore++;
-        score.textContent = (`You lose. ${computerSelection} beats ${playerSelection}. 
+        scoreCont.textContent = (`You lose. ${computerSelection} beats ${playerSelection}. 
         Player score: ${playerScore} Computer score: ${computerScore}`);
+        isGameOver(finalScore, scoreCont);
         } 
-        scoreContainer.appendChild(score);
     }
 
 let playerScore = 0;
