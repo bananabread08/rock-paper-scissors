@@ -3,16 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles/style.css" rel="stylesheet">
     <title>RPS but it's FWG</title>
 </head>
 <body>
-<header id="description">Rock, Paper, Scissors but it's Fire, Water, Grass</header>
-<div id="container">
+<header id="description">Rock, Paper, Scissors: Pokemon Edition</header>
+<div id="instructions">
+<li>
+    <ul>Fire beats Grass.</ul>
+    <ul>Grass beats Water.</ul>
+    <ul>Water beats Fire.</ul>
+</li>
+</div>
+<div id="container" class="p1-buttons">
     <button id = "fire"><img src="assets/charm.jpeg"></button>
     <button id = "water"><img src="assets/squi.jpeg"></button>
     <button id = "grass"><img src="assets/bulba.jpeg"></button>
 </div>
-<div id="result"></div>
+<div id="result" class="round-results"></div>
 <script src ="scripts/rcpscript.js"></script>
 </body>
 </html>

@@ -1,0 +1,23 @@
+html,body{
+    height:100%;
+    padding:0;
+    margin:0;
+    overflow: hidden;
+}
+
+header {
+    margin-left: 10em;
+    font-size: large;
+}
+
+#fire{
+    background-color: crimson;
+}
+
+#water{
+    background-color: cyan;
+}
+
+#grass{
+    background-color: seagreen;
+}

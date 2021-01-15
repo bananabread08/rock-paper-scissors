@@ -3,14 +3,22 @@ function computerPlay() { //create a Computer AI that selects a random choice of
     return(choices[Math.floor(Math.random() * choices.length)]);
 }
 
+function disableButton(){
+    document.getElementById("fire").disabled = true;
+    document.getElementById("water").disabled = true;
+    document.getElementById("grass").disabled = true;
+} 
+
 function isGameOver(fScore, cont){
     if (playerScore === 5){
-        cont.appendChild(fsCore);
+        cont.appendChild(fScore);
+        disableButton();
         return fScore.textContent = ("Game Over. You win!");
     }
 
     else if (computerScore === 5){
         cont.appendChild(fScore);
+        disableButton();
         return fScore.textContent = ("Game Over. Computer wins!");
     }
 }
