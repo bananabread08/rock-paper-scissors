@@ -13,13 +13,13 @@ function isGameOver(fScore, cont){
     if (playerScore === 5){
         cont.appendChild(fScore);
         disableButton();
-        return fScore.textContent = ("Game Over. You win!");
+        return fScore.textContent = ("Game Over. You win! Refresh page to play again.");
     }
 
     else if (computerScore === 5){
         cont.appendChild(fScore);
         disableButton();
-        return fScore.textContent = ("Game Over. Computer wins!");
+        return fScore.textContent = ("Game Over. Computer wins! Refresh page to play again.");
     }
 }
 

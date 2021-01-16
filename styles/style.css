@@ -6,10 +6,17 @@ html,body{
 }
 
 header {
-    margin-left: 10em;
+    text-align: center;
     font-size: large;
 }
 
+#instructions{
+    text-align: center;
+}
+
+#container {
+    text-align: center;
+}
 #fire{
     background-color: crimson;
 }
@@ -20,4 +27,8 @@ header {
 
 #grass{
     background-color: seagreen;
+}
+
+#result {
+    text-align: center;
 }
